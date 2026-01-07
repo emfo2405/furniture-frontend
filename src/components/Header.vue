@@ -1,8 +1,8 @@
 <template>
     <header>
         <div id="menu">
-            <h1>FurnitureStore</h1>
-            <nav>
+            <h1 class="m-2 text-center">FurnitureStore</h1>
+            <nav class="m-2 mb-0">
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
                         <RouterLink to="/" class="nav-link" active-class="active">Start</RouterLink>
@@ -18,6 +18,7 @@
                     </li>
                 </ul>
             </nav>
+            <img class="w-100" src="/public/furnitureStoreHeader.jpg">
         </div>
     </header>
 </template>

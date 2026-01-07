@@ -1,7 +1,19 @@
     .nav-link {
-        color: brown;
+        color: #ce6626;
     }
 
     .nav-link:hover {
-        color: rgb(105, 24, 24);
+        color: #a25b14;
     }
+
+    #menu h1 {
+        color: #ce6626
+    }
+
+    #startInfo {
+        background-color: #ce66269e;
+        border: 1px solid #75400b;
+        color: #5c3208;
+    }
+
+
