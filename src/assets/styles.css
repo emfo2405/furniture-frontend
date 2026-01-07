@@ -1,0 +1,7 @@
+    .nav-link {
+        color: brown;
+    }
+
+    .nav-link:hover {
+        color: rgb(105, 24, 24);
+    }
