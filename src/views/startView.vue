@@ -25,7 +25,11 @@
             
         </form>
 
-        <p>Har du inget konto än? Skapa ett <a>här</a></p>
+        <p>Har du inget konto än? Skapa ett <RouterLink to="/createuser" class="link-secondary link-offset-1 link-underline-opacity-25 link-underline-opacity-100-hover">här</RouterLink></p>
     </div>
 
 </template>
+
+<script>
+    import { RouterLink } from 'vue-router';
+</script>

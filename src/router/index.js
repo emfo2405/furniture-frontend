@@ -3,6 +3,7 @@ import startView from '@/views/startView.vue'
 import addView from '@/views/addView.vue'
 import categoriesView from '@/views/categoriesView.vue'
 import updateView from '@/views/updateView.vue'
+import CreateUser from '@/views/createUser.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -25,6 +26,11 @@ const router = createRouter({
     path: "/update",
     name: "update",
     component: updateView
+  }, 
+    {
+    path: "/createuser",
+    name: "createUser",
+    component: CreateUser
   }
   ],
 
