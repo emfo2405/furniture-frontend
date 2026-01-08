@@ -34,5 +34,6 @@ import CategoryItem from '@/components/CategoryItem.vue';
 </script>
 
 <template>
+        <h2 class="m-3 text-center">Våra kategorier</h2>
 <CategoryItem v-for="category in categories" :category="category" :key="category._id"/>
 </template>

@@ -1,3 +1,5 @@
+
+    
     .nav-link {
         color: #ce6626;
     }
@@ -16,6 +18,8 @@
         color: #5c3208;
     }
 
-
+.categoryItem {
+    box-shadow: 5px 5px 0px black;
+}
 
 
