@@ -23,7 +23,6 @@
     const description = ref("");
     const error = ref("");
 
-    const emits = defineEmits(["updateCategories"]);
 
     const token = localStorage.getItem("token");
 
@@ -54,7 +53,7 @@
         })
 
         if(res.ok) {
-            emits("updateCategories");
+ 
             //Rensa fält i formuläret
             nameCategory.value = "";
             description.value = "";
