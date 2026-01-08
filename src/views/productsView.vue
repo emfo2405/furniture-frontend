@@ -4,7 +4,10 @@ import ProductItem from '@/components/ProductItem.vue';
 import { RouterLink, useRoute } from 'vue-router';
 
 
+
+
     const products = ref([])
+    const categories = ref([])
     const loading = ref(false)
 
     const route = useRoute();
@@ -13,8 +16,34 @@ import { RouterLink, useRoute } from 'vue-router';
 
     onMounted(() => {
         getProducts();
+        showCategory();
     })
 
+    const showCategory = async() =>{
+        loading.value = true;
+
+    try {
+
+        const res = await fetch(`https://furniture-backend-aym8.onrender.com/categories/${categoryId}`)
+
+        if(res.ok) {
+            const data = await res.json();
+            console.log("Hämtad data", data);
+            categories.value = data;
+        } else {
+
+        }
+
+    } catch (error){
+        console.log("There was an error: " + error)
+    } finally {
+        loading.value = false;
+    }
+}
+
+
+
+    
     const getProducts = async() =>{
         loading.value = true;
 
@@ -34,13 +63,14 @@ import { RouterLink, useRoute } from 'vue-router';
         console.log("There was an error: " + error)
     } finally {
         loading.value = false;
+    
     }
-    }
+}
 
 </script>
 
 <template>
-        <h2 class="m-3 text-center">Våra produkter i kategori {{ categoryId }}</h2>
+        <h2 class="m-3 text-center">Våra produkter i kategori {{ categories.name }}</h2>
 
         <p v-if="loading" class="loading text-center text-muted">Produkter laddas in...</p>
 <ProductItem v-for="product in products" :product="product" :key="product._id"/>
