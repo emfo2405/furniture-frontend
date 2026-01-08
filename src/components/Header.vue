@@ -18,7 +18,7 @@
                     </li>
                 </ul>
             </nav>
-            <img class="w-100" src="/public/furnitureStoreHeader.jpg">
+            <img class="w-100" src="/furnitureStoreHeader.jpg">
         </div>
     </header>
 </template>
