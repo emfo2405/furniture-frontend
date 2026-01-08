@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue';
 import CategoryItem from '@/components/CategoryItem.vue';
 import { RouterLink } from 'vue-router';
+import CategoryForm from '@/components/CategoryForm.vue';
 
 
     const categories = ref([])
@@ -35,19 +36,7 @@ import { RouterLink } from 'vue-router';
 </script>    
 
 <template>
-    <div id="categoryForm" class="w-75 d-block m-auto justify-content-center">
-        <form>
-<h2 class="text-center m-4">Lägg till en kategori</h2>
-
-    <label for="name" class="form-label">Namn:</label>
-    <input type="name" class="form-control" id="name">
-
-    <label for="beskrivning" class="form-label">Beskrivning:</label>
-    <input type="beskrivning" class="form-control" id="description">
-
-    <button id="addButton" type="submit" class="btn btn-secondary mt-4">Lägg till</button>
-</form>
-</div>
+<CategoryForm @update-categories="getCategories"/>
 
 <div id="productForm" class="w-75 d-block m-auto justify-content-center">
     <h2 class="text-center m-4">Lägg till en produkt</h2>
