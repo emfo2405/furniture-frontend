@@ -30,11 +30,13 @@
     const changeStock = async (setNumber) => {
 
          error.value = "";
+         const token = localStorage.getItem("token");
 
         try{
             const res = await fetch(`https://furniture-backend-aym8.onrender.com/products/${props.product._id}/addStock`, {
                 method: 'PATCH', 
                 headers: {
+                    'Authorization': `bearer ${token}`,
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({ setNumber: setNumber})
