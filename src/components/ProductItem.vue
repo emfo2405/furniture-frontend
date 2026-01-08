@@ -11,6 +11,7 @@
                 <p>{{ product.stock }}</p>
                 <button @click="changeStock(1)">+</button>
             </div>
+            <button @click="$emit('deleteProduct', product._id)">Radera</button>
             <p v-if="error" class="error">{{ error }}</p>
         </div>
     </article>
@@ -20,6 +21,8 @@
     import { ref } from 'vue';
 
     const error = ref("");
+
+    const emit = defineEmits(["deleteProduct"]);
 
     
 
