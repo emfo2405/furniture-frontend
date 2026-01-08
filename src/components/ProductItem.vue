@@ -36,7 +36,7 @@
             const res = await fetch(`https://furniture-backend-aym8.onrender.com/products/${props.product._id}/addStock`, {
                 method: 'PATCH', 
                 headers: {
-                    'Authorization': `bearer ${token}`,
+                    'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({ setNumber: setNumber})
