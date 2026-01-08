@@ -3,6 +3,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import CategoryItem from '@/components/CategoryItem.vue';
+import { RouterLink } from 'vue-router';
 
 
     const categories = ref([])
@@ -37,6 +38,8 @@ import CategoryItem from '@/components/CategoryItem.vue';
 
 <template>
         <h2 class="m-3 text-center">Våra kategorier</h2>
+
         <p v-if="loading" class="loading text-center text-muted">Kategorier laddas in...</p>
 <CategoryItem v-for="category in categories" :category="category" :key="category._id"/>
+        <button class="addCategory rounded p-3 mt-5 mb-5"><RouterLink to="/add" class="text-dark">Lägg till en ny kategori</RouterLink></button>
 </template>
