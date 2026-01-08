@@ -13,7 +13,7 @@
     <input type="password" class="form-control" id="password" v-model="password">
 
     <label for="role">Arbetsroll:</label>
-    <select id="role" name="role">
+    <select id="role" name="role" v-model="role"> 
         <option value="Lagerarbetare">Lagerarbetare</option>
         <option value="Arbetsledare">Arbetsledare</option>
     </select>
