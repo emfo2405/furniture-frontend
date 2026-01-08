@@ -4,6 +4,7 @@
             <h3>{{ category.name }}</h3>
             <p> {{ category.description }}</p>
             <button class="toProducts"><RouterLink :to="`/products/${category._id}`" class="text-dark">Visa produkterna i kategorin</RouterLink></button>
+            <button @click="$emit('deleteCategory', category._id)">Radera</button>
   
         </div>
   </article>
@@ -15,4 +16,6 @@
     const props = defineProps({
         category: Object
     })
+
+      const emit = defineEmits(["deleteCategory"]);
 </script>

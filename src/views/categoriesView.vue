@@ -9,6 +9,8 @@ import { RouterLink } from 'vue-router';
     const categories = ref([])
     const loading = ref(false)
 
+    const token = localStorage.getItem("token");
+
     onMounted(() => {
         getCategories();
     })
@@ -34,6 +36,24 @@ import { RouterLink } from 'vue-router';
     }
     }
 
+    const deleteCategory = async (_id) => {
+        try {
+            const res = await fetch("https://furniture-backend-aym8.onrender.com/categories/" + _id, {
+            method: "DELETE",
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            });
+
+            if(res.ok) {
+                getCategories();
+            }
+        } catch (error) {
+            console.log("There was an error: " + error)
+        }
+    }
+
 
 
 </script>
@@ -42,6 +62,6 @@ import { RouterLink } from 'vue-router';
         <h2 class="m-3 text-center">Våra kategorier</h2>
 
         <p v-if="loading" class="loading text-center text-muted">Kategorier laddas in...</p>
-<CategoryItem v-for="category in categories" :category="category" :key="category._id"/>
+<CategoryItem v-for="category in categories" :category="category" :key="category._id" @delete-category="deleteCategory"/>
         <button class="addCategory rounded p-3 mt-5 mb-5"><RouterLink to="/add" class="text-dark">Lägg till en ny kategori</RouterLink></button>
 </template>
