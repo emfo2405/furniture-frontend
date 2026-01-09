@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue';
 import ProductItem from '@/components/ProductItem.vue';
 import { RouterLink, useRoute } from 'vue-router';
-import LoginForm from './loginForm.vue';
+import LoginForm from '@/components/loginForm.vue';
 
 
 
@@ -86,6 +86,8 @@ import LoginForm from './loginForm.vue';
 
             if(res.ok) {
                 getProducts();
+            } else if(res.status === 401) {
+                loginError.value = "Du måste vara inloggad för att göra ändringar";
             }
         } catch (error) {
             console.log("There was an error: " + error)
