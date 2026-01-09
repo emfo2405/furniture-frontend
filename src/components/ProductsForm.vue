@@ -1,4 +1,8 @@
 <template>
+    <div v-if="loginError" class="loginError">
+        <h2>{{ loginError }}</h2>
+        <LoginForm />
+    </div>
 
 <div id="productForm" class="w-75 d-block m-auto justify-content-center">
     <h2 class="text-center m-4">Lägg till en produkt</h2>
@@ -37,11 +41,13 @@
 <script setup>
 import { ref } from 'vue';
 import { onMounted } from 'vue';
+import LoginForm from './loginForm.vue';
 
     const categories = ref([])
     const loading = ref(false)
 
     const error = ref("");
+    const loginError = ref("");
 
     const nameProduct = ref("");
     const color = ref("");
@@ -107,7 +113,9 @@ import { onMounted } from 'vue';
             price.value = "";
             stock.value = "";
             image.value = "";
-        }
+        }else if(res.status === 401) {
+                loginError.value = "Du måste vara inloggad för att göra ändringar";
+            }
         } catch (error) {
             console.log("Något gick fel: " + error)
         }
