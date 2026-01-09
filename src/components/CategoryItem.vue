@@ -5,6 +5,7 @@
             <p> {{ category.description }}</p>
             <button class="toProducts"><RouterLink :to="`/products/${category._id}`" class="text-dark">Visa produkterna i kategorin</RouterLink></button>
             <button @click="$emit('deleteCategory', category._id)">Radera</button>
+            <button class="update"><RouterLink :to="`/categories/${category._id}`" class="text-dark">Uppdatera kategorin</RouterLink></button>
   
         </div>
   </article>

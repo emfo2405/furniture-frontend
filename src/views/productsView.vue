@@ -31,7 +31,6 @@ import LoginForm from '@/components/loginForm.vue';
 
         if(res.ok) {
             const data = await res.json();
-            console.log("Hämtad data", data);
             categories.value = data;
         } else if(res.status === 401) {
                 loginError.value = "Du måste vara inloggad för att göra ändringar";

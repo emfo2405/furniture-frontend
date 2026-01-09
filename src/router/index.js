@@ -2,9 +2,10 @@ import { createRouter, createWebHistory } from 'vue-router'
 import startView from '@/views/startView.vue'
 import addView from '@/views/addView.vue'
 import categoriesView from '@/views/categoriesView.vue'
-import updateView from '@/views/updateView.vue'
+import updateView from '@/views/updateCategoryView.vue'
 import CreateUser from '@/views/createUser.vue'
 import ProductsView from '@/views/productsView.vue'
+import UpdateCategoryView from '@/views/updateCategoryView.vue'
 
 
 const router = createRouter({
@@ -34,10 +35,15 @@ const router = createRouter({
     name: "createUser",
     component: CreateUser
   },
-      {
+  {
     path: "/products/:categoryId",
     name: "products",
     component: ProductsView
+  },
+    {
+    path: "/categories/:categoryId",
+    name: "updateCategories",
+    component: UpdateCategoryView
   }
   ],
 
