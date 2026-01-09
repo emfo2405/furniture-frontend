@@ -53,7 +53,10 @@ const token = localStorage.getItem("token");
 
             if(res.ok) {
                 getCategories();
-            }
+            } else if(res.status===401) {
+            loginError.value = "Du måste vara inloggad";
+            return;
+        }
         } catch (error) {
             console.log("There was an error: " + error)
         }

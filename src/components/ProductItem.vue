@@ -6,17 +6,24 @@
     <article class="d-flex flex-column align-items-center">
         <div class="categoryItem border border-dark m-4 p-3 w-50 d-flex flex-column align-items-center">
 
-            <h3>{{ product.name }}</h3>
-            <h4>{{ product.price }}</h4>
-            <h4>{{ product.color }}</h4>
-            <p> {{ product.description }}</p>
-            <div class="d-flex" id="stockDiv">
-                <button @click="changeStock(-1)" :disabled="product.stock <=0">-</button>
-                <p>{{ product.stock }}</p>
-                <button @click="changeStock(1)">+</button>
+            <h3 class="border-bottom border-dark">{{ product.name }}</h3>
+            <img class="m-3" v-bind:src="product.image" alt="Produktbild">
+            <div class="text-start align-self-start ms-3">
+            <p class="mb-0">Färg: {{ product.color }} </p>
+            <p>Pris: {{ product.price }} kr</p>
+            <p></p>  
             </div>
-            <button @click="$emit('deleteProduct', product._id)">Radera</button>
-             <RouterLink :to="`/products/${product._id}`" class="text-dark">Uppdatera produkten</RouterLink>
+
+            <p class="text-secondary"> {{ product.description }}</p>
+            <div class="d-flex align-items-center" id="stockDiv">
+                <p class="mt-3">Lagersaldo:</p>
+                <button id="addStock" class="rounded-circle m-2" @click="changeStock(-1)" :disabled="product.stock <=0"><span class="material-symbols-outlined d-flex">remove</span></button>
+                <p class="mt-3">{{ product.stock }}</p>
+                <button id="addStock" class="rounded-circle m-2" @click="changeStock(1)"><span class="material-symbols-outlined d-flex">add</span></button>
+            </div>
+
+             <button class="update rounded m-2 p-2 btn btn-dark"><RouterLink :to="`/products/${product._id}`" class="text-light">Uppdatera produkten</RouterLink></button>
+            <button class="btn btn-danger rounded m-2" @click="$emit('deleteProduct', product._id)">Radera</button>
             <p v-if="error" class="error">{{ error }}</p>
         </div>
     </article>
@@ -56,9 +63,12 @@ import { RouterLink } from 'vue-router';
             });
 
             if(res.ok) {
+                error.value = "";
+                loginError.value = "";
 
             } else if(res.status === 401) {
                 loginError.value = "Du måste vara inloggad för att göra ändringar";
+                error.value = "Logga in överst på sidan"
             }
             
             else {

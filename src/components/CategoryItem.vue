@@ -1,18 +1,21 @@
 <template>
     <article class="d-flex flex-column align-items-center">
-        <div class="categoryItem border border-dark m-4 p-3 w-50 d-flex flex-column align-items-center">
+        <div class="categoryItem m-4 p-3 w-50 d-flex flex-column align-items-center">
             <h3>{{ category.name }}</h3>
-            <p> {{ category.description }}</p>
-            <button class="toProducts"><RouterLink :to="`/products/${category._id}`" class="text-dark">Visa produkterna i kategorin</RouterLink></button>
-            <button @click="$emit('deleteCategory', category._id)">Radera</button>
-            <button class="update"><RouterLink :to="`/categories/${category._id}`" class="text-dark">Uppdatera kategorin</RouterLink></button>
-  
+            <p class="text-secondary"> {{ category.description }}</p>
+            <div id="categoryBtns" class="d-flex">
+            <button class="toProducts rounded m-2 p-2 btn btn-dark"><RouterLink :to="`/products/${category._id}`" class="text-light">Visa produkterna</RouterLink></button>
+            <button class="update rounded m-2 p-2 btn btn-dark"><RouterLink :to="`/categories/${category._id}`" class="text-light">Uppdatera kategorin</RouterLink></button>
+            </div>
+            <button class="btn btn-danger rounded m-2" @click="$emit('deleteCategory', category._id)">Radera</button>
         </div>
   </article>
 </template>
 
 <script setup>
-    import { RouterLink } from 'vue-router';
+    import { onMounted } from 'vue';
+import { RouterLink } from 'vue-router';
+
 
     const props = defineProps({
         category: Object
