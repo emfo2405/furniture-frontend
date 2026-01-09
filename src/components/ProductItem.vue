@@ -1,7 +1,7 @@
 <template>
     <div v-if="loginError" class="loginError">
         <h2>{{ loginError }}</h2>
-
+        <LoginForm />
     </div>
     <article class="d-flex flex-column align-items-center">
         <div class="categoryItem border border-dark m-4 p-3 w-50 d-flex flex-column align-items-center">
@@ -23,6 +23,7 @@
 
 <script setup>
     import { ref } from 'vue';
+import LoginForm from './loginForm.vue';
 
     const error = ref("");
     const loginError = ref("");

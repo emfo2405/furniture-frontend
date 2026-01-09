@@ -70,6 +70,8 @@ import { RouterLink, useRoute } from 'vue-router';
 }
 
     const deleteProduct = async (_id) => {
+            const token = localStorage.getItem("token");
+
         try {
             const res = await fetch("https://furniture-backend-aym8.onrender.com/products/" + _id, {
             method: "DELETE",
