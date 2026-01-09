@@ -4,12 +4,14 @@
 import { ref, onMounted } from 'vue';
 import CategoryItem from '@/components/CategoryItem.vue';
 import { RouterLink } from 'vue-router';
+import LoginForm from '@/components/loginForm.vue';
 
 
-    const categories = ref([])
-    const loading = ref(false)
+    const categories = ref([]);
+    const loading = ref(false);
+    const loginError = ref("");
 
-    const token = localStorage.getItem("token");
+    
 
     onMounted(() => {
         getCategories();
@@ -25,6 +27,8 @@ import { RouterLink } from 'vue-router';
         if(res.ok) {
             const data = await res.json();
             categories.value = data;
+        } else if(res.status === 401) {
+                loginError.value = "Du måste vara inloggad för att göra ändringar";
         } else {
 
         }
@@ -37,6 +41,7 @@ import { RouterLink } from 'vue-router';
     }
 
     const deleteCategory = async (_id) => {
+const token = localStorage.getItem("token");
         try {
             const res = await fetch("https://furniture-backend-aym8.onrender.com/categories/" + _id, {
             method: "DELETE",
@@ -60,6 +65,10 @@ import { RouterLink } from 'vue-router';
 
 <template>
         <h2 class="m-3 text-center">Våra kategorier</h2>
+            <div v-if="loginError" class="loginError">
+        <h2>{{ loginError }}</h2>
+        <LoginForm />
+    </div>
 
         <p v-if="loading" class="loading text-center text-muted">Kategorier laddas in...</p>
 <CategoryItem v-for="category in categories" :category="category" :key="category._id" @delete-category="deleteCategory"/>

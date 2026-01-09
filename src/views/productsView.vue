@@ -2,18 +2,19 @@
 import { ref, onMounted } from 'vue';
 import ProductItem from '@/components/ProductItem.vue';
 import { RouterLink, useRoute } from 'vue-router';
-
+import LoginForm from './loginForm.vue';
 
 
 
     const products = ref([])
     const categories = ref([])
     const loading = ref(false)
-
-    const token = localStorage.getItem("token");
+    const loginError = ref("");
 
     const route = useRoute();
     const categoryId = route.params.categoryId;
+
+
 
 
     onMounted(() => {
@@ -32,6 +33,8 @@ import { RouterLink, useRoute } from 'vue-router';
             const data = await res.json();
             console.log("Hämtad data", data);
             categories.value = data;
+        } else if(res.status === 401) {
+                loginError.value = "Du måste vara inloggad för att göra ändringar";
         } else {
 
         }
@@ -93,6 +96,11 @@ import { RouterLink, useRoute } from 'vue-router';
 
 <template>
         <h2 class="m-3 text-center">Våra produkter i kategori {{ categories.name }}</h2>
+
+    <div v-if="loginError" class="loginError">
+        <h2>{{ loginError }}</h2>
+        <LoginForm />
+    </div>
 
         <p v-if="loading" class="loading text-center text-muted">Produkter laddas in...</p>
 <ProductItem v-for="product in products" :product="product" :key="product._id" @delete-product="deleteProduct"/>
