@@ -16,6 +16,7 @@
                 <button @click="changeStock(1)">+</button>
             </div>
             <button @click="$emit('deleteProduct', product._id)">Radera</button>
+             <button class="update"><RouterLink :to="`/products/${product._id}`" class="text-dark">Uppdatera produkten</RouterLink></button>
             <p v-if="error" class="error">{{ error }}</p>
         </div>
     </article>

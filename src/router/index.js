@@ -6,6 +6,7 @@ import updateView from '@/views/updateCategoryView.vue'
 import CreateUser from '@/views/createUser.vue'
 import ProductsView from '@/views/productsView.vue'
 import UpdateCategoryView from '@/views/updateCategoryView.vue'
+import UpdateProductView from '@/views/updateProductView.vue'
 
 
 const router = createRouter({
@@ -44,6 +45,11 @@ const router = createRouter({
     path: "/categories/:categoryId",
     name: "updateCategories",
     component: UpdateCategoryView
+  },
+      {
+    path: "/products/:productId",
+    name: "updateProducts",
+    component: UpdateProductView
   }
   ],
 
