@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import UpdateCategoryForm from '@/components/updateCategoryForm.vue';
 
 </script>

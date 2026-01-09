@@ -1,3 +1,8 @@
+<script setup>
+import UpdateProductForm from '@/components/updateProductForm.vue';
+
+</script>
+
 <template>
-    <h2>Uppdatera produkt</h2>
+<UpdateProductForm />
 </template>
