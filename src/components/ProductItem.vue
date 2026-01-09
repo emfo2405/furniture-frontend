@@ -1,4 +1,8 @@
 <template>
+    <div v-if="loginError" class="loginError">
+        <h2>{{ loginError }}</h2>
+
+    </div>
     <article class="d-flex flex-column align-items-center">
         <div class="categoryItem border border-dark m-4 p-3 w-50 d-flex flex-column align-items-center">
 
@@ -21,6 +25,7 @@
     import { ref } from 'vue';
 
     const error = ref("");
+    const loginError = ref("");
 
     const emit = defineEmits(["deleteProduct"]);
 
@@ -32,6 +37,7 @@
 
     const changeStock = async (setNumber) => {
 
+        loginError.value = "";
          error.value = "";
          const token = localStorage.getItem("token");
 
@@ -48,7 +54,7 @@
             if(res.ok) {
 
             } else if(res.status === 401) {
-                error.value = "Du måste vara inloggad för att göra ändringar";
+                loginError.value = "Du måste vara inloggad för att göra ändringar";
             }
             
             else {

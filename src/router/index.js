@@ -6,6 +6,7 @@ import updateView from '@/views/updateView.vue'
 import CreateUser from '@/views/createUser.vue'
 import ProductsView from '@/views/productsView.vue'
 
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [{

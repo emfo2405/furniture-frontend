@@ -26,6 +26,8 @@
             <p class="error" v-if="error">{{ error }}</p>
         </form>
 
+        <logoutButton @click="logout"/>
+
         <p>Har du inget konto än? Skapa ett <RouterLink to="/createuser" class="link-secondary link-offset-1 link-underline-opacity-25 link-underline-opacity-100-hover">här</RouterLink></p>
     </div>
 
@@ -35,6 +37,7 @@
 
     import { ref } from 'vue';
     import { RouterLink } from 'vue-router';
+    import logoutButton from '@/components/logoutButton.vue';
 
     const error = ref("");
     const email = ref("");
