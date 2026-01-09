@@ -10,6 +10,7 @@ import LoginForm from '@/components/loginForm.vue';
     const categories = ref([])
     const loading = ref(false)
     const loginError = ref("");
+    const error = ref("");
 
     const route = useRoute();
     const categoryId = route.params.categoryId;
@@ -73,7 +74,7 @@ import LoginForm from '@/components/loginForm.vue';
 
     const deleteProduct = async (_id) => {
             const token = localStorage.getItem("token");
-
+            error.value = "";
         try {
             const res = await fetch("https://furniture-backend-aym8.onrender.com/products/" + _id, {
             method: "DELETE",
@@ -85,8 +86,14 @@ import LoginForm from '@/components/loginForm.vue';
 
             if(res.ok) {
                 getProducts();
+                error.value = "";
+                loginError.value = "";
             } else if(res.status === 401) {
-                loginError.value = "Du måste vara inloggad för att göra ändringar";
+            loginError.value = "Du måste vara inloggad";
+            window.scrollTo({
+            top:250,
+             behavior: "smooth"
+            })
             }
         } catch (error) {
             console.log("There was an error: " + error)
@@ -99,11 +106,12 @@ import LoginForm from '@/components/loginForm.vue';
         <h2 class="m-3 text-center">Våra produkter i kategori {{ categories.name }}</h2>
 
     <div v-if="loginError" class="loginError">
-        <h2>{{ loginError }}</h2>
+        <h2 class="text-center text-danger">{{ loginError }}</h2>
         <LoginForm />
     </div>
 
         <p v-if="loading" class="loading text-center text-muted">Produkter laddas in...</p>
 <ProductItem v-for="product in products" :product="product" :key="product._id" @delete-product="deleteProduct"/>
+<p v-if="error" class="error text-center text-danger">{{ error }}</p>
         <button class="addProduct rounded p-3 mt-5 mb-5"><RouterLink to="/add" class="text-dark">Lägg till en ny produkt</RouterLink></button>
 </template>

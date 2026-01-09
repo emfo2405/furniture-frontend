@@ -29,18 +29,18 @@
     border: 3px solid black;
 }
 
-.addCategory {
+.addCategory, .addProduct {
     border: 2px solid black;
     display: block;
     margin: 0 auto;
     box-shadow: 5px 5px 0px black;
 }
 
-.addCategory a{
+.addCategory a, .addProduct a{
         text-decoration: none;
 }
 
-.addCategory:hover {
+.addCategory:hover, .addProduct:hover {
     box-shadow: 2px 2px 0px black;
     transform: translate(3px, 3px);
 }

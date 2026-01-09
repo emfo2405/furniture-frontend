@@ -114,7 +114,11 @@ import LoginForm from './loginForm.vue';
             stock.value = "";
             image.value = "";
         }else if(res.status === 401) {
-                loginError.value = "Du måste vara inloggad för att göra ändringar";
+            loginError.value = "Du måste vara inloggad";
+            window.scrollTo({
+            top:250,
+             behavior: "smooth"
+            })
             }
         } catch (error) {
             console.log("Något gick fel: " + error)

@@ -67,11 +67,12 @@ import { RouterLink } from 'vue-router';
                 loginError.value = "";
 
             } else if(res.status === 401) {
-                loginError.value = "Du måste vara inloggad för att göra ändringar";
-                error.value = "Logga in överst på sidan"
-            }
-            
-            else {
+                            loginError.value = "Du måste vara inloggad";
+            window.scrollTo({
+            top:250,
+             behavior: "smooth"
+            })
+            } else {
                 console.log("Det gick inte att uppdatera");
 
             }

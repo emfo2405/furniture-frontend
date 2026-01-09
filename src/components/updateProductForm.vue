@@ -175,8 +175,11 @@
 
         if(res.status===401) {
             loginError.value = "Du måste vara inloggad";
-            return;
-        }
+            window.scrollTo({
+            top:250,
+             behavior: "smooth"
+            })
+            }
 
         if(res.ok) {
             router.push (`/categories/${product.value.category}`);

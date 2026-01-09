@@ -55,6 +55,10 @@ const token = localStorage.getItem("token");
                 getCategories();
             } else if(res.status===401) {
             loginError.value = "Du måste vara inloggad";
+            window.scrollTo({
+                top:250,
+                behavior: "smooth"
+            })
             return;
         }
         } catch (error) {
@@ -69,7 +73,7 @@ const token = localStorage.getItem("token");
 <template>
         <h2 class="m-3 text-center">Våra kategorier</h2>
             <div v-if="loginError" class="loginError">
-        <h2>{{ loginError }}</h2>
+        <h2 class="text-center text-danger">{{ loginError }}</h2>
         <LoginForm />
     </div>
 
