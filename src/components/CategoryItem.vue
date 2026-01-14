@@ -23,3 +23,25 @@ import { RouterLink } from 'vue-router';
 
       const emit = defineEmits(["deleteCategory"]);
 </script>
+
+<style scoped>
+    .categoryItem {
+    box-shadow: 10px 10px 0px black;
+    width: 400px;
+    border: 3px solid black;
+
+}
+
+.update, .toProducts {
+    display: block;
+    margin: 0 auto;
+}
+
+.update a, .toProducts a{
+text-decoration: none;
+}
+
+#categoryBtns {
+    border-top: 1.5px solid black;
+}
+</style>

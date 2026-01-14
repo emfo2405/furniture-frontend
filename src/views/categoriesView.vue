@@ -81,3 +81,21 @@ const token = localStorage.getItem("token");
 <CategoryItem v-for="category in categories" :category="category" :key="category._id" @delete-category="deleteCategory"/>
         <button class="addCategory rounded p-3 mt-5 mb-5"><RouterLink to="/add" class="text-dark">Lägg till en ny kategori</RouterLink></button>
 </template>
+
+<style scoped>
+    .addCategory{
+    border: 2px solid black;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 5px 5px 0px black;
+}
+
+.addCategory a{
+        text-decoration: none;
+}
+
+.addCategory:hover {
+    box-shadow: 2px 2px 0px black;
+    transform: translate(3px, 3px);
+}
+</style>

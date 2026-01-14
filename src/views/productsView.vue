@@ -11,6 +11,7 @@ import LoginForm from '@/components/loginForm.vue';
     const loading = ref(false)
     const loginError = ref("");
     const error = ref("");
+    const emptySet = ref("");
 
     const route = useRoute();
     const categoryId = route.params.categoryId;
@@ -60,8 +61,11 @@ import LoginForm from '@/components/loginForm.vue';
             const data = await res.json();
             console.log("Hämtad data", data);
             products.value = data;
-        } else {
-
+            console.log(products.value);
+        } 
+        
+        if(products.value.length === 0) {
+            emptySet.value = "Det finns inga produkter i den här kategorin..."
         }
 
     } catch (error){
@@ -104,6 +108,7 @@ import LoginForm from '@/components/loginForm.vue';
 
 <template>
         <h2 class="m-3 text-center">Våra produkter i kategori {{ categories.name }}</h2>
+        <p v-if="emptySet" class="error text-center text-secondary">{{ emptySet }}</p>
 
     <div v-if="loginError" class="loginError">
         <h2 class="text-center text-danger">{{ loginError }}</h2>
@@ -115,3 +120,21 @@ import LoginForm from '@/components/loginForm.vue';
 <p v-if="error" class="error text-center text-danger">{{ error }}</p>
         <button class="addProduct rounded p-3 mt-5 mb-5"><RouterLink to="/add" class="text-dark">Lägg till en ny produkt</RouterLink></button>
 </template>
+
+<style scoped>
+    .addProduct {
+    border: 2px solid black;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 5px 5px 0px black;
+}
+
+.addProduct a{
+        text-decoration: none;
+}
+
+.addProduct:hover {
+    box-shadow: 2px 2px 0px black;
+    transform: translate(3px, 3px);
+}
+</style>

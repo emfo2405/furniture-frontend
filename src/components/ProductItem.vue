@@ -84,3 +84,37 @@ import { RouterLink } from 'vue-router';
         }
     }
 </script>
+
+<style scoped>
+    .categoryItem img {
+    width: 200px;
+    border: 3px solid black;
+}
+
+    .categoryItem {
+    box-shadow: 10px 10px 0px black;
+    width: 400px;
+    border: 3px solid black;
+
+}
+
+#stockDiv {
+    border-top: 1.5px solid black;
+}
+
+#addStock {
+    font-size: 20px;
+    font-weight: bold;
+    background-color: black;
+}
+
+#stockDiv p{
+    font-size: 20px;;
+}
+
+.material-symbols-outlined {
+    color: white;
+    font-size: 15px;
+
+}
+</style>

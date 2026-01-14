@@ -26,11 +26,6 @@ const router = createRouter({
     name: "add",
     component: addView
   },
-  {
-    path: "/update",
-    name: "update",
-    component: updateView
-  }, 
     {
     path: "/createuser",
     name: "createUser",

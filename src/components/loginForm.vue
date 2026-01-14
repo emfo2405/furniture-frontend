@@ -8,10 +8,14 @@
             <label for="password" class="form-label">Lösenord:</label>
             <input type="password" class="form-control" id="password" v-model="password">
 
+            <div class="d-flex justify-content-around">
             <button id="logInButton" type="submit" class="btn btn-secondary mt-4">Logga in</button>
+            <logoutButton />
+            </div>
 
             <p class="error" v-if="error">{{ error }}</p>
         </form>
+        
 
         <p>Har du inget konto än? Skapa ett <RouterLink to="/createuser" class="link-secondary link-offset-1 link-underline-opacity-25 link-underline-opacity-100-hover">här</RouterLink></p>
     </div>
@@ -66,3 +70,11 @@
         }
     }
 </script>
+
+<style scoped>
+    #logoutBtn {
+    border: none;
+    background-color: white;
+    text-decoration: underline;
+}
+</style>

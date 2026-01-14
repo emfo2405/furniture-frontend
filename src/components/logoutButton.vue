@@ -1,5 +1,5 @@
-<template @click="logout" class="btn btn-danger">
-Logga ut
+<template>
+<button @click="logout" id="logoutBtn" class="text-secondary mt-3">Logga ut</button>
 </template>
 
 <script setup>

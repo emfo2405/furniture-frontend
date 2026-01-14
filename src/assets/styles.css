@@ -1,82 +1,26 @@
    
-    .nav-link {
-        color: #ce6626;
-    }
-
-    .nav-link:hover {
-        color: #a25b14;
-    }
-
-    #menu h1 {
-        color: #ce6626
-    }
-
-    #startInfo {
-        background-color: #ce66269e;
-        border: 1px solid #75400b;
-        color: #5c3208;
-    }
-
-.categoryItem {
-    box-shadow: 10px 10px 0px black;
-    width: 400px;
-    border: 3px solid black;
-
-}
-
-.categoryItem img {
-    width: 200px;
-    border: 3px solid black;
-}
-
-.addCategory, .addProduct {
-    border: 2px solid black;
-    display: block;
-    margin: 0 auto;
-    box-shadow: 5px 5px 0px black;
-}
-
-.addCategory a, .addProduct a{
-        text-decoration: none;
-}
-
-.addCategory:hover, .addProduct:hover {
-    box-shadow: 2px 2px 0px black;
-    transform: translate(3px, 3px);
-}
-
-footer {
-    background-color: #e1a079;
-}
-
-.update, .toProducts {
-    display: block;
-    margin: 0 auto;
-}
-
-.update a, .toProducts a{
-text-decoration: none;
-}
-
-#categoryBtns, #stockDiv {
-    border-top: 1.5px solid black;
-}
-
-#addStock {
-    font-size: 20px;
-    font-weight: bold;
-    background-color: black;
-}
-
-#stockDiv p{
-    font-size: 20px;;
-}
 
 
-.material-symbols-outlined {
-    color: white;
-    font-size: 15px;
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

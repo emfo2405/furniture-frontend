@@ -25,3 +25,11 @@ import LoginForm from '@/components/loginForm.vue';
 
 
 </script>
+
+<style scoped>
+        #startInfo {
+        background-color: #ce66269e;
+        border: 1px solid #75400b;
+        color: #5c3208;
+    }
+</style>

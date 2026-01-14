@@ -13,9 +13,6 @@
                     <li class="nav-item">
                         <RouterLink to="/add" class="nav-link" active-class="active">Lägg till</RouterLink>
                     </li>
-                    <li class="nav-item">
-                        <RouterLink to="/update" class="nav-link" active-class="active">Uppdatera</RouterLink>
-                    </li>
                 </ul>
             </nav>
             <img class="w-100" src="/furnitureStoreHeader.jpg">
@@ -27,4 +24,18 @@
 <script>
     import { RouterLink } from 'vue-router';
 </script>
+
+<style scoped>
+        .nav-link {
+        color: #ce6626;
+    }
+
+    .nav-link:hover {
+        color: #a25b14;
+    }
+
+    #menu h1 {
+        color: #ce6626
+    }
+</style>
 
