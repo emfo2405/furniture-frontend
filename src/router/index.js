@@ -24,7 +24,8 @@ const router = createRouter({
   {
     path: "/add",
     name: "add",
-    component: addView
+    component: addView,
+    meta: {requiresAuth: true}
   },
     {
     path: "/createuser",
@@ -49,6 +50,17 @@ const router = createRouter({
   ],
 
 
+})
+
+router.beforeEach((to, from, next) => {
+  const token =localStorage.getItem('token')
+  const authorizedUser = !!token
+
+  if(to.meta.requiresAuth && !authorizedUser) {
+    next('/')
+  } else {
+    next()
+  }
 })
 
 export default router

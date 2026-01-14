@@ -1,6 +1,6 @@
 <template>
     <article class="d-flex flex-column align-items-center">
-        <div class="categoryItem m-4 p-3 w-50 d-flex flex-column align-items-center">
+        <div class="categoryItem m-4 p-3 col-10 col-md-6 col-lg-4 col-xl-3 d-flex flex-column align-items-center">
             <h3>{{ category.name }}</h3>
             <p class="text-secondary"> {{ category.description }}</p>
             <div id="categoryBtns" class="d-flex">
