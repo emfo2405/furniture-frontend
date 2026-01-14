@@ -1,6 +1,6 @@
 <template>
     <div id="signIn" class="d-flex flex-column align-items-center">
-        <form class="p-3 w-50  border border-dark rounded" 
+        <form class="p-3 col-10 col-md-6 col-lg-4 col-xl-3 border border-dark rounded"
         @submit.prevent="login">
             <label for="email" class="form-label">E-post:</label>
             <input type="email" class="form-control" id="email" v-model="email">

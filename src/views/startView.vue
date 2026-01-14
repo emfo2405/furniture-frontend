@@ -1,14 +1,7 @@
 <template>
-    <div id="startInfo" class="text-center p-3 m-5 alert alert-warning" role="alert">
+    <div id="startInfo" class="text-center p-3 alert alert-warning col-10 col-md-6 col-lg-4 col-xl-3 m-auto mt-5 mb-5" role="alert">
         <h2>Välkommen till oss</h2>
-        <p>text text text text 
-            text text text text 
-            text text text text 
-            text text text text 
-            text text text text 
-            text text text text 
-            text text text text 
-            text text text text 
+        <p>Det här är lagerhanteringstjänsten för FurnitureStore. Du kan visa både kategorier och produkter utan att vara inloggad men för att uppdatera, lägga till eller radera något behöver du vara inloggad med ett giltigt konto. Om du inte har ett konto än kan du enkelt skapa ett genom att följa länken vid inloggningsformuläret.
         </p>
     </div>
 
