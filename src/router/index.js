@@ -7,6 +7,7 @@ import CreateUser from '@/views/createUser.vue'
 import ProductsView from '@/views/productsView.vue'
 import UpdateCategoryView from '@/views/updateCategoryView.vue'
 import UpdateProductView from '@/views/updateProductView.vue'
+import LoginView from '@/views/loginView.vue'
 
 
 const router = createRouter({
@@ -46,7 +47,13 @@ const router = createRouter({
     path: "/products/:productId",
     name: "updateProducts",
     component: UpdateProductView
-  }
+  },
+    {
+    path: "/login",
+    name: "login",
+    component: LoginView
+  },
+
   ],
 
 
@@ -57,7 +64,7 @@ router.beforeEach((to, from, next) => {
   const authorizedUser = !!token
 
   if(to.meta.requiresAuth && !authorizedUser) {
-    next('/')
+    next('/login')
   } else {
     next()
   }
