@@ -71,7 +71,7 @@ const token = localStorage.getItem("token");
 </script>
 
 <template>
-        <h2 class="m-3 text-center">Våra kategorier</h2>
+        <h1 class="m-3 text-center">Våra kategorier</h1>
             <div v-if="loginError" class="loginError">
         <h2 class="text-center text-danger">{{ loginError }}</h2>
         <LoginForm />

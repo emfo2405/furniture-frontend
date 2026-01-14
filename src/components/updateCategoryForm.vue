@@ -1,7 +1,7 @@
 <template>
-        <div id="categoryForm" class="w-75 d-block m-auto justify-content-center">
-        <form @submit.prevent="updateCategory">
-<h2 class="text-center m-4">Lägg till en kategori</h2>
+        <div id="categoryForm" class=" d-block m-auto justify-content-center col-10 col-md-8 col-lg-6 col-xl-4">
+        <form @submit.prevent="updateCategory" >
+<h1 class="text-center m-4">Uppdatera en kategori</h1>
 
     <div v-if="loginError" class="loginError">
         <h2>{{ loginError }}</h2>
@@ -14,10 +14,13 @@
     <label for="beskrivning" class="form-label">Beskrivning:</label>
     <input type="text" class="form-control" id="description" v-model="description">
 
+    <p class="error text-danger mt-3" v-if="error">{{ error }}</p>
+    <p class="success text-success mt-3" v-if="success">{{ success }}</p>
+
     <button id="addButton" type="submit" class="btn btn-secondary mt-4">Uppdatera</button>
 </form>
 
-<p class="error" v-if="error">{{ error }}</p>
+
 </div>
 </template>
 
@@ -33,6 +36,7 @@
     const loading = ref(false);
     const loginError = ref("");
     const error = ref("");
+    const success = ref("");
 
     const route = useRoute();
     const router = useRouter();
@@ -51,8 +55,9 @@
             if(res.ok) {
                 const data = await res.json();
                 category.value = data;
+                error.value = "";
             } else {
-                error.value = "Något gick fel";
+                error.value = "Något gick fel, försök igen";
             }
         } catch (err) {
             console.log("Något gick fel: " + error)
@@ -97,14 +102,23 @@
             })
         }
     );
-            
 
-        if(res.status===401) {
+        if(res.ok) {
+            success.value = "Kategorin är uppdaterad"
+            error.value = "";
+
+            setTimeout(() => {
+         router.push("/categories");   
+        }, 1200);
+
+        } else if(res.status===401) {
             loginError.value = "Du måste vara inloggad";
             window.scrollTo({
             top:250,
              behavior: "smooth"
             })
+            } else {
+                error.value = "Något gick fel, försök igen";
             }
 
         if(res.ok) {

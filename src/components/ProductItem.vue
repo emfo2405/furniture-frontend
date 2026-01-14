@@ -4,7 +4,7 @@
         <LoginForm />
     </div>
     <article class="d-flex flex-column align-items-center justify-content-center">
-        <div class="col-10 col-md-8 col-lg-6 col-xl-4">
+        <div class="col-10 col-md-8 col-lg-6 col-xl-3">
         <div class="categoryItem border border-dark m-4 p-3 d-flex flex-column align-items-center">
 
             <h3 class="productHeading border-bottom border-dark">{{ product.name }}</h3>
@@ -21,11 +21,14 @@
                 <button id="addStock" class="rounded-circle m-2" @click="changeStock(-1)" :disabled="product.stock <=0"><span class="material-symbols-outlined d-flex">remove</span></button>
                 <p class="mt-3">{{ product.stock }}</p>
                 <button id="addStock" class="rounded-circle m-2" @click="changeStock(1)"><span class="material-symbols-outlined d-flex">add</span></button>
+                
             </div>
+
+            <p v-if="success" class="success text-success">{{ success }}</p>
 
              <RouterLink :to="`/products/update/${product._id}`" class="text-light update rounded m-2 p-2 btn btn-dark">Uppdatera produkten</RouterLink>
             <button class="btn btn-danger rounded m-2" @click="$emit('deleteProduct', product._id)">Radera</button>
-            <p v-if="error" class="error">{{ error }}</p>
+            <p v-if="error" class="error text-danger mt-3">{{ error }}</p>
         </div>
         </div>
     </article>
@@ -38,6 +41,7 @@ import { RouterLink } from 'vue-router';
 
 
     const error = ref("");
+    const success = ref("");
     const loginError = ref("");
 
     const emit = defineEmits(["deleteProduct"]);
@@ -67,14 +71,16 @@ import { RouterLink } from 'vue-router';
             if(res.ok) {
                 error.value = "";
                 loginError.value = "";
+                success.value = "Lagersaldot har uppdaterats!"
 
             } else if(res.status === 401) {
-                            loginError.value = "Du måste vara inloggad";
+            loginError.value = "Du måste vara inloggad";
             window.scrollTo({
             top:250,
              behavior: "smooth"
             })
             } else {
+                error.value = "Något gick fel, försök igen"
                 console.log("Det gick inte att uppdatera");
 
             }

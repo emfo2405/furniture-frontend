@@ -4,8 +4,8 @@
         <LoginForm />
     </div>
 
-<div id="productForm" class="w-75 d-block m-auto justify-content-center">
-    <h2 class="text-center m-4">Lägg till en produkt</h2>
+<div id="productForm" class=" d-block m-auto justify-content-center col-10 col-md-8 col-lg-6 col-xl-4">
+    <h1 class="text-center m-4">Uppdatera en produkt</h1>
     <form @submit.prevent="updateProduct">
     <label for="name" class="form-label">Namn:</label>
     <input type="text" class="form-control" id="name" v-model="nameProduct">
@@ -25,15 +25,12 @@
     <label for="image" class="form-label">Bild-url:</label>
     <input type="url" class="form-control" id="image" v-model="image">
 
-    <label for="category" class="form-label">Kategori:</label>
-    <select id="category" name="category" class="form-control" v-model="category">
-        <option 
-        v-for="category in categories" :key="category._id" :value="category._id">{{ category.name }}</option>
-    </select>
+    <p class="error text-danger mt-3" v-if="error">{{ error }}</p>
+    <p class="success text-success mt-3" v-if="success">{{ success }}</p>
 
     <button id="addButton" type="submit" class="btn btn-secondary mt-4">Uppdatera produkt</button>
 </form>
-<p class="error" v-if="error">{{ error }}</p>
+
 </div>
 
 </template>
@@ -56,6 +53,7 @@
     const loading = ref(false);
     const loginError = ref("");
     const error = ref("");
+    const success = ref("");
 
     const route = useRoute();
     const router = useRouter();
@@ -100,7 +98,7 @@
                 const data = await res.json();
                 product.value = data;
             } else {
-                error.value = "Något gick fel";
+                error.value = "Något gick fel, försök igen";
             }
         } catch (err) {
             console.log("Något gick fel: " + error)
@@ -152,6 +150,7 @@
             return;
         }
 
+
         const data = {
             name: nameProduct.value,
             color: color.value,
@@ -159,7 +158,6 @@
             stock: Number(stock.value),
             image: image.value,
             description: description.value,
-            category: category.value
         }
 
         try {
@@ -173,18 +171,21 @@
             });
             
 
-        if(res.status===401) {
+        if(res.ok) {
+        success.value = "Produkten är uppdaterad"
+            error.value = "";
+            setTimeout(() => {
+         router.push("/categories");   
+        }, 1200);
+        } else if(res.status===401) {
             loginError.value = "Du måste vara inloggad";
             window.scrollTo({
             top:250,
              behavior: "smooth"
             })
+            } else {
+                error.value = "Något gick fel, försök igen";
             }
-
-        if(res.ok) {
-            router.push (`/categories/${product.value.category}`);
-            return;
-        }
 
         } catch (err) {
             error.value = "Något gick fel";

@@ -1,7 +1,7 @@
 <template>
-        <div id="categoryForm" class="w-75 d-block m-auto justify-content-center">
+        <div id="categoryForm" class="mb-5 d-block m-auto justify-content-center col-10 col-md-8 col-lg-6 col-xl-3">
         <form @submit.prevent="addCategory">
-<h2 class="text-center m-4">Lägg till en kategori</h2>
+<h1 class="text-center m-4">Lägg till en kategori</h1>
 
     <div v-if="loginError" class="loginError">
         <h2>{{ loginError }}</h2>
@@ -14,10 +14,13 @@
     <label for="beskrivning" class="form-label">Beskrivning:</label>
     <input type="text" class="form-control" id="description" v-model="description">
 
-    <button id="addButton" type="submit" class="btn btn-secondary mt-4">Lägg till</button>
+    <p class="error mt-3 text-danger" v-if="error">{{ error }}</p>
+    <p class="success mt-3 text-success" v-if="success">{{ success }}</p>
+
+    <button id="addButton" type="submit" class="btn btn-secondary mt-2 mb-5">Lägg till</button>
 </form>
 
-<p class="error" v-if="error">{{ error }}</p>
+
 </div>
 </template>
 
@@ -29,6 +32,7 @@
     const description = ref("");
     const error = ref("");
     const loginError = ref("");
+    const success = ref("");
 
 
    
@@ -67,6 +71,9 @@
             //Rensa fält i formuläret
             nameCategory.value = "";
             description.value = "";
+            success.value = "En ny kategori är tillagd"
+            error.value= "";
+
         } else if(res.status === 401) {
             loginError.value = "Du måste vara inloggad";
             window.scrollTo({
@@ -74,6 +81,7 @@
              behavior: "smooth"
             })
             } else {
+                error.value = "Något gick fel, försök igen"
                 console.log("Det gick inte att uppdatera");
 
             }

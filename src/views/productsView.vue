@@ -107,7 +107,7 @@ import LoginForm from '@/components/loginForm.vue';
 </script>
 
 <template>
-        <h2 class="m-3 text-center">Våra produkter i kategori {{ categories.name }}</h2>
+        <h1 class="m-3 text-center">Våra produkter i kategori {{ categories.name }}</h1>
         <p v-if="emptySet" class="error text-center text-secondary">{{ emptySet }}</p>
 
     <div v-if="loginError" class="loginError">

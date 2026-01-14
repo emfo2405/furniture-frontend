@@ -1,6 +1,6 @@
 <template>
-    <footer class="text-center p-2 mt-5">
-        <p>Emma Forsmalm <br> Projektuppgift</p>
+    <footer class="text-center p-2 mt-5 pt-4">
+        <p>FurnitureStore <br> Lagerhanteringstjänst</p>
     </footer>
 </template>
 

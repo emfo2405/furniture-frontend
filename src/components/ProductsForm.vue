@@ -4,8 +4,8 @@
         <LoginForm />
     </div>
 
-<div id="productForm" class="w-75 d-block m-auto justify-content-center">
-    <h2 class="text-center m-4">Lägg till en produkt</h2>
+<div id="productForm" class="mt-5 d-block m-auto justify-content-center col-10 col-md-8 col-lg-6 col-xl-3">
+    <h1 class="text-center m-4">Lägg till en produkt</h1>
     <form @submit.prevent="addProduct">
     <label for="name" class="form-label">Namn:</label>
     <input type="text" class="form-control" id="name" v-model="nameProduct">
@@ -31,9 +31,11 @@
         v-for="category in categories" :key="category._id" :value="category._id">{{ category.name }}</option>
     </select>
 
-    <button id="addButton" type="submit" class="btn btn-secondary mt-4">Lägg till</button>
+    <p class="error mt-3 text-danger" v-if="error">{{ error }}</p>
+    <p class="success mt-3 text-success" v-if="success">{{ success }}</p>
+
+    <button id="addButton" type="submit" class="btn btn-secondary mt-2 mb-5">Lägg till</button>
 </form>
-<p class="error" v-if="error">{{ error }}</p>
 </div>
 
 </template>
@@ -48,6 +50,7 @@ import LoginForm from './loginForm.vue';
 
     const error = ref("");
     const loginError = ref("");
+    const success = ref("");
 
     const nameProduct = ref("");
     const color = ref("");
@@ -113,12 +116,18 @@ import LoginForm from './loginForm.vue';
             price.value = "";
             stock.value = "";
             image.value = "";
+            success.value = "En ny kategori är tillagd";
+            error.value = "";
+
+
         }else if(res.status === 401) {
             loginError.value = "Du måste vara inloggad";
             window.scrollTo({
             top:250,
              behavior: "smooth"
             })
+            } else {
+                error.value = "Något gick fel, försök igen"
             }
         } catch (error) {
             console.log("Något gick fel: " + error)

@@ -1,10 +1,11 @@
 <template>
-    <div id="startInfo" class="text-center p-3 alert alert-warning col-10 col-md-6 col-lg-4 col-xl-3 m-auto mt-5 mb-5" role="alert">
-        <h2>Välkommen till oss</h2>
+    <div id="startInfo" class="text-center p-3 alert alert-warning col-10 col-md-8 col-lg-6 col-xl-4 m-auto mt-5 mb-5" role="alert">
+        
+        <h1>Välkommen till oss</h1>
         <p>Det här är lagerhanteringstjänsten för FurnitureStore. Du kan visa både kategorier och produkter utan att vara inloggad men för att uppdatera, lägga till eller radera något behöver du vara inloggad med ett giltigt konto. Om du inte har ett konto än kan du enkelt skapa ett genom att följa länken vid inloggningsformuläret.
         </p>
     </div>
-
+    <h3 class="text-center mb-3">Logga in här</h3>
     <LoginForm/>
 
 </template>

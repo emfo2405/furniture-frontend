@@ -1,7 +1,7 @@
 <template>
-        <div id="userForm" class="w-75 d-block m-auto justify-content-center">
+        <div id="userForm" class="col-10 col-md-8 col-lg-6 col-xl-3 d-block m-auto justify-content-center">
         <form @submit.prevent="addUser">
-<h2 class="text-center m-4">Skapa ett användarkonto</h2>
+<h1 class="text-center m-4">Skapa ett användarkonto</h1>
 
     <label for="nameUser" class="form-label">Namn:</label>
     <input type="text" class="form-control" id="nameUser" v-model="nameUser">
@@ -12,16 +12,19 @@
     <label for="password" class="form-label">Lösenord:</label>
     <input type="password" class="form-control" id="password" v-model="password">
 
-    <label for="role">Arbetsroll:</label>
-    <select id="role" name="role" v-model="role"> 
+    <label for="role" class="form-label">Arbetsroll:</label>
+    <select id="role" name="role" class="form-control" v-model="role"> 
         <option value="Lagerarbetare">Lagerarbetare</option>
         <option value="Arbetsledare">Arbetsledare</option>
     </select>
 
+    <p class="success mt-2 text-success" v-if="success">{{ success }}</p>
+    <p class="error mt-2 text-danger" v-if="error">{{ error }}</p>
+
     <button id="addButton" type="submit" class="btn btn-secondary mt-4">Skapa användare</button>
 </form>
 
-<p class="error" v-if="error">{{ error }}</p>
+
 </div>
 </template>
 
@@ -34,6 +37,7 @@
     const role = ref("");
 
     const error = ref("");
+    const success = ref("");
 
     const addUser = async () => {
         if(nameUser.value.length <1) {
@@ -77,7 +81,15 @@
             email.value = "";
             password.value = "";
             role.value = "";
+            error.value = "";
+            success.value = "Ny användare skapad!";
+        } else if(res.status===409) {
+            error.value = "E-postadressen är redan registrerad, testa med en annan"
+        } else {
+            error.value = "Något gick fel, försök igen."
         }
+
+
     } catch (error) {
         console.log("Något gick fel: " + error);
     }
