@@ -3,11 +3,12 @@
         <h2 class="text-center text-danger mt-5 mb-3">{{ loginError }}</h2>
         <LoginForm />
     </div>
-    <article class="d-flex flex-column align-items-center">
-        <div class="categoryItem border border-dark m-4 p-3 w-50 d-flex flex-column align-items-center">
+    <article class="d-flex flex-column align-items-center justify-content-center">
+        <div class="col-10 col-md-8 col-lg-6 col-xl-4">
+        <div class="categoryItem border border-dark m-4 p-3 d-flex flex-column align-items-center">
 
-            <h3 class="border-bottom border-dark">{{ product.name }}</h3>
-            <img class="m-3" v-bind:src="product.image" alt="Produktbild">
+            <h3 class="productHeading border-bottom border-dark">{{ product.name }}</h3>
+            <img class="m-3 w-50" v-bind:src="product.image" alt="Produktbild">
             <div class="text-center">
             <p class="mb-0">Färg: {{ product.color }} </p>
             <p>Pris: {{ product.price }} kr</p>
@@ -22,9 +23,10 @@
                 <button id="addStock" class="rounded-circle m-2" @click="changeStock(1)"><span class="material-symbols-outlined d-flex">add</span></button>
             </div>
 
-             <button class="update rounded m-2 p-2 btn btn-dark"><RouterLink :to="`/products/${product._id}`" class="text-light">Uppdatera produkten</RouterLink></button>
+             <RouterLink :to="`/products/update/${product._id}`" class="text-light update rounded m-2 p-2 btn btn-dark">Uppdatera produkten</RouterLink>
             <button class="btn btn-danger rounded m-2" @click="$emit('deleteProduct', product._id)">Radera</button>
             <p v-if="error" class="error">{{ error }}</p>
+        </div>
         </div>
     </article>
 </template>
@@ -93,7 +95,6 @@ import { RouterLink } from 'vue-router';
 
     .categoryItem {
     box-shadow: 10px 10px 0px black;
-    width: 400px;
     border: 3px solid black;
 
 }
@@ -115,6 +116,13 @@ import { RouterLink } from 'vue-router';
 .material-symbols-outlined {
     color: white;
     font-size: 15px;
+
+}
+
+@media (min-width: 1100px) {
+.productHeading {
+    font-size: 220%;
+}
 
 }
 </style>

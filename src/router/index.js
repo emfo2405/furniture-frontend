@@ -45,10 +45,10 @@ const router = createRouter({
      meta: {requiresAuth: true}
   },
       {
-    path: "/products/:productId",
+    path: "/products/update/:productId",
     name: "updateProducts",
     component: UpdateProductView,
-     meta: {requiresAuth: true}
+        meta: {requiresAuth: true}
   },
     {
     path: "/login",
