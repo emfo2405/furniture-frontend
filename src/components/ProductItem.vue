@@ -1,6 +1,6 @@
 <template>
     <div v-if="loginError" class="loginError">
-        <h2>{{ loginError }}</h2>
+        <h2 class="text-center text-danger mt-5 mb-3">{{ loginError }}</h2>
         <LoginForm />
     </div>
     <article class="d-flex flex-column align-items-center">
@@ -8,7 +8,7 @@
 
             <h3 class="border-bottom border-dark">{{ product.name }}</h3>
             <img class="m-3" v-bind:src="product.image" alt="Produktbild">
-            <div class="text-start align-self-start ms-3">
+            <div class="text-center">
             <p class="mb-0">Färg: {{ product.color }} </p>
             <p>Pris: {{ product.price }} kr</p>
             <p></p>  

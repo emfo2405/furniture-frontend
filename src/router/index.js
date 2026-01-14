@@ -41,12 +41,14 @@ const router = createRouter({
     {
     path: "/categories/:categoryId",
     name: "updateCategories",
-    component: UpdateCategoryView
+    component: UpdateCategoryView,
+     meta: {requiresAuth: true}
   },
       {
     path: "/products/:productId",
     name: "updateProducts",
-    component: UpdateProductView
+    component: UpdateProductView,
+     meta: {requiresAuth: true}
   },
     {
     path: "/login",
