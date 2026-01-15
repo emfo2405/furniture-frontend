@@ -1,7 +1,7 @@
 <template>
     <header>
         <div id="menu">
-            <h1 class="m-2 text-center">FurnitureStore</h1>
+            <h1 class="m-2 text-center mainHeader">FurnitureStore</h1>
             <nav class="m-2 mb-0">
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
@@ -15,7 +15,7 @@
                     </li>
                 </ul>
             </nav>
-            <img class="w-100" src="/furnitureStoreHeader.jpg">
+            <img class="w-100" src="/furniturestore.jpg">
         </div>
     </header>
 </template>
@@ -36,6 +36,10 @@
 
     #menu h1 {
         color: #ce6626
+    }
+
+    .mainHeader {
+        font-size: 300%; 
     }
 </style>
 

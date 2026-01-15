@@ -75,6 +75,7 @@ import { RouterLink } from 'vue-router';
 
             } else if(res.status === 401) {
             loginError.value = "Du måste vara inloggad";
+            success.value = "";
             window.scrollTo({
             top:250,
              behavior: "smooth"
@@ -82,6 +83,7 @@ import { RouterLink } from 'vue-router';
             } else {
                 error.value = "Något gick fel, försök igen"
                 console.log("Det gick inte att uppdatera");
+                success.value = "";
 
             }
 

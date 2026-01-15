@@ -78,7 +78,7 @@
             const data = await res.json();
             categories.value = data;
         } else {
-
+            success.value = "";
         }
 
     } catch (error){
@@ -99,6 +99,7 @@
                 product.value = data;
             } else {
                 error.value = "Något gick fel, försök igen";
+                success.value = "";
             }
         } catch (err) {
             console.log("Något gick fel: " + error)
@@ -127,26 +128,32 @@
 
         if(nameProduct.value.length < 1) {
             error.value = "Skriv ett namn";
+            success.value = "";
             return;
         }
         if(color.value.length < 1) {
             error.value = "Skriv en färg";
+            success.value = "";
             return;
         }
         if(Number(price.value) < 1) {
             error.value = "Skriv ett pris";
+            success.value = "";
             return;
         }
         if(Number(stock.value) < 1) {
             error.value = "Skriv ett lagersaldo";
+            success.value = "";
             return;
         }
         if(image.value.length < 1) {
             error.value = "Lägg till en bildlänk";
+            success.value = "";
             return;
         }
         if(description.value.length < 1) {
             error.value = "Lägg till en beskrivning";
+            success.value = "";
             return;
         }
 
@@ -179,12 +186,14 @@
         }, 1200);
         } else if(res.status===401) {
             loginError.value = "Du måste vara inloggad";
+            success.value = "";
             window.scrollTo({
             top:250,
              behavior: "smooth"
             })
             } else {
                 error.value = "Något gick fel, försök igen";
+                success.value = "";
             }
 
         } catch (err) {

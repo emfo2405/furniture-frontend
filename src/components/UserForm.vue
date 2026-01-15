@@ -85,8 +85,10 @@
             success.value = "Ny användare skapad!";
         } else if(res.status===409) {
             error.value = "E-postadressen är redan registrerad, testa med en annan"
+            success.value = "";
         } else {
             error.value = "Något gick fel, försök igen."
+            success.value = "";
         }
 
 

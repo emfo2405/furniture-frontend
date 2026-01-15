@@ -48,10 +48,12 @@
 
         if(email.value.length <1) {
             error.value = "Fyll i e-postadress";
+            success.value = "";
             return;
         }
         if(password.value.length <1) {
             error.value = "Fyll i ett lösenord";
+            success.value = "";
             return;}
 
         try{
@@ -77,9 +79,11 @@
                 localStorage.setItem("user", JSON.stringify(result.user))
 
             } else if (res.status===422) {
-                error.value = "E-postadress eller lösenord stämmer inte, testa igen"
+                error.value = "E-postadress eller lösenord stämmer inte, testa igen";
+                success.value = "";
             } else {
                 error.value = "Något gick fel vid inloggning"
+                success.value = "";
             }
         } catch (err){
             console.log("Något gick fel vid inloggning", err)

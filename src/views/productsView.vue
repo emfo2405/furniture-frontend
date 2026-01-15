@@ -98,6 +98,8 @@ import LoginForm from '@/components/loginForm.vue';
             top:250,
              behavior: "smooth"
             })
+            } else {
+                error.value ="Något gick fel, försök igen"
             }
         } catch (error) {
             console.log("There was an error: " + error)

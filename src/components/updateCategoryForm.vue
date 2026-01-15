@@ -58,6 +58,7 @@
                 error.value = "";
             } else {
                 error.value = "Något gick fel, försök igen";
+                success.value = "";
             }
         } catch (err) {
             console.log("Något gick fel: " + error)
@@ -81,11 +82,13 @@
 
         if(nameCategory.value.length < 1) {
             error.value = "Skriv ett namn";
+            success.value = "";
             return;
         }
 
         if(description.value.length < 1) {
             error.value = "Skriv en beskrivning";
+            success.value = "";
             return;
         }
 

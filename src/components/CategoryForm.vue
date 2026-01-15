@@ -43,10 +43,12 @@
 
         if(nameCategory.value.length <1) {
             error.value = "Skriv ett namn";
+            success.value = "";
             return;
         }
         if(description.value.length <1) {
             error.value = "Skriv en beskrivning";
+            success.value = "";
             return;
         }
 
@@ -76,6 +78,7 @@
 
         } else if(res.status === 401) {
             loginError.value = "Du måste vara inloggad";
+            success.value = "";
             window.scrollTo({
             top:250,
              behavior: "smooth"
@@ -83,6 +86,7 @@
             } else {
                 error.value = "Något gick fel, försök igen"
                 console.log("Det gick inte att uppdatera");
+                success.value = "";
 
             }
     } catch (error) {
