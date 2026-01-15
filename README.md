@@ -1,38 +1,11 @@
-# furniture-frontend
+# FurnitureStore
+## Syftet med uppgiften
+Syftet med det här projektet var att skapa en lagerhanteringstjänst för ett valfritt företag. Den här webbplatsen är skapad för företaget furnitureStore och hanterar lager för olika möbler i olika kategorier. Tjänsten läser in data om kategorier och produkter från en databas och funktionalitet hanteras i en backendtjänst.
 
-This template should help get you started developing with Vue 3 in Vite.
+I den här lagerhanteringstjänsten kan man se vilka kategorier som finns samt vilka produkter dessa kategorier innehåller. För användare som är inloggade finns även funktionalitet för att hantera denna data så som att lägga till nya produkter/kategorier eller uppdatera och radera redan befintliga produkter/kategorier. 
+För att komma åt funktionaliteten behöver man ha ett konto, vilket också kan skapas på webbplatsen. 
 
-## Recommended IDE Setup
+Designen för sidan är tänkt att vara så tydlig och enkel som möjligt för att fungera som just en lagerhanteringstjänst och därmed är inte designen i fokus utan funktionalitet och användbarhet.
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Recommended Browser Setup
-
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+## Verktyg
+Projektet är skapat med Vue och CSS-ramverket Bootstrap. 
