@@ -1,4 +1,5 @@
 <template>
+    <!--Header skapad med meny-->
     <header>
         <div id="menu">
             <h1 class="m-2 text-center mainHeader">FurnitureStore</h1>
@@ -22,10 +23,12 @@
 
 
 <script>
+    //Importerar router
     import { RouterLink } from 'vue-router';
 </script>
 
 <style scoped>
+    /*Design av länkar och meny */
         .nav-link {
         color: #ce6626;
     }

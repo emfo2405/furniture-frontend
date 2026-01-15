@@ -1,9 +1,10 @@
 <template>
+    <!--Om användaren inte är inloggad-->
     <div v-if="loginError" class="loginError">
         <h2>{{ loginError }}</h2>
         <LoginForm />
     </div>
-
+<!--Formulär för att uppdatera produkt-->
 <div id="productForm" class=" d-block m-auto justify-content-center col-10 col-md-8 col-lg-6 col-xl-4">
     <h1 class="text-center m-4">Uppdatera en produkt</h1>
     <form @submit.prevent="updateProduct">
@@ -25,9 +26,11 @@
     <label for="image" class="form-label">Bild-url:</label>
     <input type="url" class="form-control" id="image" v-model="image">
 
+    <!--Felmeddelanden eller meddelanden om att något lyckas-->
     <p class="error text-danger mt-3" v-if="error">{{ error }}</p>
     <p class="success text-success mt-3" v-if="success">{{ success }}</p>
 
+    <!--Knapp för att uppdatera produkt-->
     <button id="addButton" type="submit" class="btn btn-secondary mt-4">Uppdatera produkt</button>
 </form>
 
@@ -36,10 +39,12 @@
 </template>
 
 <script setup>
+    //Läser in filer för scriptet
     import { ref, onMounted, watch } from 'vue';
     import { useRoute, useRouter } from 'vue-router';
     import LoginForm from './loginForm.vue';
 
+    //Skapar variabler
     const product = ref(null);
     const nameProduct = ref("");
     const color = ref("");
@@ -59,48 +64,29 @@
     const router = useRouter();
     const productId = route.params.productId;
 
+    //Hämtar in produkt när sidan läses in
     onMounted(() => {
         getProduct();
     })
 
-        onMounted(() => {
-        getCategories();
-    })
-
-    const getCategories = async() =>{
-        loading.value = true;
-
-    try {
-
-        const res = await fetch("https://furniture-backend-aym8.onrender.com/categories")
-
-        if(res.ok) {
-            const data = await res.json();
-            categories.value = data;
-        } else {
-            success.value = "";
-        }
-
-    } catch (error){
-        console.log("There was an error: " + error)
-    } finally {
-        loading.value = false;
-    }
-}
-
+//Funktion för att hämta in en produkt med visst id
     const getProduct = async() => {
         loading.value = true;
 
+        //GET-anrop för produkt med id
         try {
             const res = await fetch(`https://furniture-backend-aym8.onrender.com/products/${productId}`)
 
+            //Om allt går bra
             if(res.ok) {
                 const data = await res.json();
                 product.value = data;
+                //Om något går fel
             } else {
                 error.value = "Något gick fel, försök igen";
                 success.value = "";
             }
+            //Om något går fel med try
         } catch (err) {
             console.log("Något gick fel: " + error)
         } finally {
@@ -108,7 +94,7 @@
         }
     }
 
-    //Fyll formulär
+    //Fyll formulär och kollar efter ändringar
     watch (product, (newProduct) => {
         if(newProduct) {
             nameProduct.value = newProduct.name;
@@ -124,8 +110,10 @@
     //Uppdatera formulär
         const updateProduct = async () => {
         error.value = "";
+        //Läser in token från localstorage
         const token = localStorage.getItem("token");
 
+        //Kontrollerar inputs
         if(nameProduct.value.length < 1) {
             error.value = "Skriv ett namn";
             success.value = "";
@@ -158,6 +146,7 @@
         }
 
 
+        //Sparar input i variabel
         const data = {
             name: nameProduct.value,
             color: color.value,
@@ -167,6 +156,7 @@
             description: description.value,
         }
 
+        //PATCH-anrop för produkt med id för att uppdatera med nya uppgifter
         try {
             const res = await fetch(`https://furniture-backend-aym8.onrender.com/products/${productId}`, {
              method: "PATCH",
@@ -177,13 +167,14 @@
             body: JSON.stringify(data)
             });
             
-
+//Om allt går bra
         if(res.ok) {
         success.value = "Produkten är uppdaterad"
             error.value = "";
             setTimeout(() => {
          router.push("/categories");   
         }, 1200);
+        //Om användaren inte är autentiserad
         } else if(res.status===401) {
             loginError.value = "Du måste vara inloggad";
             success.value = "";
@@ -191,11 +182,12 @@
             top:250,
              behavior: "smooth"
             })
+            //Om något annat går fel
             } else {
                 error.value = "Något gick fel, försök igen";
                 success.value = "";
             }
-
+//Om något går fel med try
         } catch (err) {
             error.value = "Något gick fel";
         }

@@ -1,4 +1,5 @@
 <template>
+    <!--Footer skapad-->
     <footer class="text-center p-2 mt-5 pt-4">
         <p>FurnitureStore <br> Lagerhanteringstjänst</p>
     </footer>

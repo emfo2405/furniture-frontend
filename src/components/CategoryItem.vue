@@ -1,13 +1,13 @@
 <template>
 
-
     <article class="d-flex flex-column align-items-center">
         <div class="col-10 col-md-8 col-lg-6 col-xl-4">
         <div class="categoryItem m-4 p-3  d-flex flex-column align-items-center ">
-            
+            <!--Struktur för hur en kategori ska se ut-->
             <h3 class="categoryHeading">{{ category.name }}</h3>
             <p class="text-secondary"> {{ category.description }}</p>
             <div id="categoryBtns" class="d-flex">
+                <!--Knappar för att visa produkter, uppdatera kategori eller radera kategori-->
             <button class="toProducts rounded m-2 p-2 btn btn-dark"><RouterLink :to="`/products/${category._id}`" class="text-light">Visa produkterna</RouterLink></button>
            <RouterLink :to="`/categories/${category._id}`" class="text-light update rounded m-2 p-2 btn btn-dark">Uppdatera kategorin</RouterLink>
             </div>
@@ -20,10 +20,11 @@
 </template>
 
 <script setup>
+    //Importerar filer för scriptet
     import { onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
 
-
+//Kategoriobjekt skapat
     const props = defineProps({
         category: Object
     })
@@ -32,6 +33,7 @@ import { RouterLink } from 'vue-router';
 </script>
 
 <style scoped>
+    /*Design för kategori */
     .categoryItem {
     box-shadow: 10px 10px 0px black;
     border: 3px solid black;
