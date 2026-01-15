@@ -3,8 +3,12 @@
     <header>
         <div id="menu">
             <h1 class="m-2 text-center mainHeader">FurnitureStore</h1>
-            <nav class="m-2 mb-0">
-                <ul class="nav nav-tabs">
+            <nav class="m-2 mb-0 navbar navbar-expand-md">
+                <!--Knapp för att visa meny på små skärmar-->
+                <!--Klasser för hamburgermenyfunktionalitet-->
+                <button class="menuBtn navbar-toggler m-1 p-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbar">Meny</button>
+                <div id="navbar" class="collapse navbar-collapse m-1">
+                <ul class="nav nav-tabs navbar-nav w-50 text-center">
                     <li class="nav-item">
                         <RouterLink to="/" class="nav-link" active-class="active">Start</RouterLink>
                     </li>
@@ -15,6 +19,7 @@
                         <RouterLink to="/add" class="nav-link" active-class="active">Lägg till</RouterLink>
                     </li>
                 </ul>
+                </div>
             </nav>
             <img class="w-100" src="/furniturestore.jpg">
         </div>
@@ -43,6 +48,11 @@
 
     .mainHeader {
         font-size: 300%; 
+    }
+
+    .menuBtn{
+        border: 2px solid #ac734f;
+        color:#ac734f;
     }
 </style>
 
